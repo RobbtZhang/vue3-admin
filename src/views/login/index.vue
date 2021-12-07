@@ -2,7 +2,8 @@
   <div class="login-container">
     <el-form class="login-form" :model="loginForm" :rules="loginRules" ref="loginFormRef">
       <div class="title-container">
-        <h3 class="title">用户登录</h3>
+        <h3 class="title">{{$t('msg.login.title')}}</h3>
+        <LangSelect class="lang-select" />
       </div>
       <!-- username -->
       <el-form-item prop="username">
@@ -25,7 +26,7 @@
       </el-form-item>
       <!-- 登录按钮 -->
       <el-button type="primary" style="width: 100%; margin-bottom: 30px" :loading="loading" @click="handleLoading"
-        >登录</el-button
+        >{{$t('msg.login.loginBtn')}}</el-button
       >
     </el-form>
   </div>
@@ -35,16 +36,19 @@
 import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
+import LangSelect from '@/components/LangSelect'
+import { useI18n } from 'vue-i18n'
 const loginForm = ref({
   username: 'super-admin',
   password: '123456'
 })
+const i18n = useI18n()
 const loginRules = ref({
   username: [
     {
       required: true,
       trigger: 'blur',
-      message: '用户名为必填项'
+      message: i18n.t('msg.login.usernameRule')
     }
   ],
   password: [
@@ -144,6 +148,16 @@ $cursor: #fff;
     font-size: 16px;
     cursor: pointer;
     user-select: none;
+  }
+  ::v-deep .lang-select {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    background-color: #fff;
+    font-size: 22px;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
   }
 }
 </style>

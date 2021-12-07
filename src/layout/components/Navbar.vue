@@ -3,6 +3,7 @@
     <Hamburger class="hamburger-container" />
     <Breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <LangSelect class="right-menu-item hover-effect" />
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <el-avatar
@@ -15,10 +16,10 @@
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
             <router-link to="/">
-              <el-dropdown-item>主页</el-dropdown-item>
+              <el-dropdown-item>{{$t('msg.navBar.home')}}</el-dropdown-item>
             </router-link>
           </el-dropdown-menu>
-          <el-dropdown-item divided @click="logout">退出登录</el-dropdown-item>
+          <el-dropdown-item divided @click="logout">{{$t('msg.navBar.logout')}}</el-dropdown-item>
         </template>
       </el-dropdown>
     </div>
@@ -29,6 +30,7 @@
 import { useStore } from 'vuex'
 import Hamburger from './hamburger'
 import Breadcrumb from './breadcrumb'
+import LangSelect from '@/components/LangSelect'
 const store = useStore()
 const logout = () => {
   store.dispatch('user/logout')
