@@ -3,6 +3,8 @@
     <Hamburger class="hamburger-container" />
     <Breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <HeaderSearch class="right-menu-item hover-effect" />
+      <Screenfull class="right-menu-item hover-effect" />
       <ThemePicker class="right-menu-item hover-effect" />
       <LangSelect class="right-menu-item hover-effect" />
       <el-dropdown class="avatar-container" trigger="click">
@@ -35,6 +37,8 @@ import Hamburger from './hamburger'
 import Breadcrumb from './breadcrumb'
 import LangSelect from '@/components/LangSelect'
 import ThemePicker from '@/components/ThemeSelect'
+import Screenfull from '@/components/Screenfull'
+import HeaderSearch from '@/components/HeaderSearch'
 const store = useStore()
 const logout = () => {
   store.dispatch('user/logout')
