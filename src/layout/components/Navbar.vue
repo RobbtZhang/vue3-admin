@@ -1,8 +1,9 @@
 <template>
   <div class="navbar">
     <Hamburger class="hamburger-container" />
-    <Breadcrumb class="breadcrumb-container" />
+    <Breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
     <div class="right-menu">
+      <Guide class="right-menu-item hover-effect" />
       <HeaderSearch class="right-menu-item hover-effect" />
       <Screenfull class="right-menu-item hover-effect" />
       <ThemePicker class="right-menu-item hover-effect" />
@@ -39,6 +40,7 @@ import LangSelect from '@/components/LangSelect'
 import ThemePicker from '@/components/ThemeSelect'
 import Screenfull from '@/components/Screenfull'
 import HeaderSearch from '@/components/HeaderSearch'
+import Guide from '@/components/Guide'
 const store = useStore()
 const logout = () => {
   store.dispatch('user/logout')
