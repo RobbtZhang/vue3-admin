@@ -16,3 +16,10 @@ export const userBatchImport = data => {
     data
   })
 }
+
+// 删除用户列表数据
+export const deleteUser = id => {
+  return request({
+    url: `/user-manage/detele/${id}`
+  })
+}
