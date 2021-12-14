@@ -19,6 +19,13 @@ const privateRoutes = [
         }
       },
       {
+        path: '/user/import',
+        component: () => import('@/views/import/index'),
+        meta: {
+          title: 'excelImport'
+        }
+      },
+      {
         path: '/user/role',
         component: () => import('@/views/role-list/index'),
         meta: {

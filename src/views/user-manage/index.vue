@@ -2,7 +2,7 @@
   <div class="user-manage-container">
     <el-card class="header">
       <div>
-        <el-button type="primary">{{ $t('msg.excel.importExcel') }}</el-button>
+        <el-button type="primary" @click="onImportExcelClick">{{ $t('msg.excel.importExcel') }}</el-button>
         <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
       </div>
     </el-card>
@@ -54,9 +54,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onActivated } from 'vue'
 import { getUserManageList } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
+import { useRouter } from 'vue-router'
 
 const tableData = ref([])
 const total = ref(0)
@@ -72,10 +73,22 @@ const getListData = async () => {
   total.value = result.total
 }
 
-const handleSizeChange = () => {}
-const handleCurrentChange = () => {}
+const router = useRouter()
+
+const handleSizeChange = currentSize => {
+  size.value = currentSize
+  getListData()
+}
+const handleCurrentChange = currentPage => {
+  page.value = currentPage
+  getListData()
+}
+const onImportExcelClick = () => {
+  router.push('/user/import')
+}
 getListData()
 watchSwitchLang(getListData)
+onActivated(getListData)
 </script>
 
 <style lang="scss" scoped>
