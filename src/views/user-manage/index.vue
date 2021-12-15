@@ -31,7 +31,7 @@
         </el-table-column>
         <el-table-column align="center" :label="$t('msg.excel.action')" fixed="right" width="300">
           <template #default="{ row }">
-            <el-button type="primary" size="mini">{{$t('msg.excel.show')}}</el-button>
+            <el-button type="primary" size="mini" @click="onShowClick(row._id)">{{$t('msg.excel.show')}}</el-button>
             <el-button type="info" size="mini">{{$t('msg.excel.showRole')}}</el-button>
             <el-button
               type="danger"
@@ -80,6 +80,10 @@ const getListData = async () => {
 }
 
 const router = useRouter()
+
+const onShowClick = id => {
+  router.push(`/user/info/${id}`)
+}
 
 const handleSizeChange = currentSize => {
   size.value = currentSize
